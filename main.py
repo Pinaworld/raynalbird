@@ -1,6 +1,9 @@
 import pygame
 from pygame.locals import *
 
+from classes import *
+from const import *
+
 
 pygame.init()
 
@@ -25,6 +28,8 @@ while run:
         
         #HOME
         while runHome:
+
+            pygame.time.Clock().tick(30)
             window.blit(backHome, (0,0))
             for event in pygame.event.get():
                 if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
@@ -37,6 +42,7 @@ while run:
                     runGame = True
                     runHome = False
             pygame.display.flip()
+
             
         #GAME
         while runGame:
