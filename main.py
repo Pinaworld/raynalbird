@@ -4,22 +4,24 @@ from pygame.locals import *
 
 pygame.init()
 
-fen = pygame.display.set_mode((1280, 720))
+window = pygame.display.set_mode((1280, 720))
 
 pygame.display.set_caption("--FLAPPY RAYNAL--")
-accueilBack = pygame.image.load("accBack.png").convert_alpha()
-fen.blit(accueilBack, (0,0))
+backHome = pygame.image.load("accBack.png").convert_alpha()
+window.blit(backHome, (0,0))
 
 pygame.display.flip()
-cont = True
 
-while cont:
-    
 
+runHome = True
+runGame = True
+
+#Accueil
+while runHome:
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-            if event.key == K_ESCAPE:
-                cont = False
+            if event.key == K_ESCAPE or event:
+                runHome = False
 
             
     pygame.display.flip()
