@@ -47,6 +47,9 @@ while run:
         #GAME
         while runGame:
             window.blit(backGame, (0, 0))
+            runGameEasy = False
+            runGameMedium = False
+            runGameHard = False
             
             for event in pygame.event.get():
                 if event.type == KEYDOWN and event.key == K_ESCAPE:
@@ -58,7 +61,21 @@ while run:
                     runHome = False
                     runGame = False
                     print("QuitOnGame")
-                    
+                if event.type == KEYDOWN and event.key == K_F1:
+                    runGameEasy = True
+                    runGameMedium= False
+                    runGameHard = False
+                    print("EasyMode")
+                if event.type == KEYDOWN and event.key ==  K_F2:
+                    runGameEasy = False
+                    runGameMedium= True
+                    runGameHard = False
+                    print("MediumMode")
+                if event.type == KEYDOWN and event.key ==  K_F3:
+                    runGameEasy = False
+                    runGameMedium= False
+                    runGameHard = True
+                    print("HardMode")
             pygame.display.flip()
 
 
