@@ -21,8 +21,8 @@ while run:
         runHome = True
         runGame = False
 
-        backHome = pygame.image.load("homeBack.png").convert_alpha()
-        backGame = pygame.image.load("gameBack.png").convert_alpha()
+        backHome = pygame.image.load(pic_home).convert_alpha()
+        backGame = pygame.image.load(pic_game).convert_alpha()
             
         pygame.display.flip()
         
@@ -49,10 +49,15 @@ while run:
             window.blit(backGame, (0, 0))
             
             for event in pygame.event.get():
-                if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+                if event.type == KEYDOWN and event.key == K_ESCAPE:
                     runHome = True
                     runGame = False
                     print("GameToHome")
+                if event.type == QUIT:
+                    run = False
+                    runHome = False
+                    runGame = False
+                    print("QuitOnGame")
                     
             pygame.display.flip()
 
