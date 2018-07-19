@@ -6,7 +6,7 @@ size_window = nbr_of_sprite * size_of_sprite
 
 
 pic_home = "pics/homeBack.png"
-pic_game = "pics/gameBack.png"
+pic_game = "pics/levelBack.png"
 pic_pipe = "pics/pipe.png"
 pic_go = "pics/go.png"
 pic_gameover = "pics/gameover.png"

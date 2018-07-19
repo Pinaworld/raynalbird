@@ -3,7 +3,7 @@ from pygame.locals import *
 from const import *
 
 
-class Perso:
+class Bird:
 	    def __init__(self, up, down, level):
                 
                     self.up = pygame.image.load(up).convert_alpha()
