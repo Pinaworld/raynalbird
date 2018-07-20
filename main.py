@@ -14,7 +14,27 @@ pygame.display.set_caption("--FLAPPY RAYNAL--")
 
 run = True
 
+def birdMove(x, y, bird):
+        window.blit(bird, (x,y))
+        
+def score(count):
+        fonty = pygame.font.Font('BradBunR.ttf', 16)
+        text = fonty.render("score : " + str(count), True, white)
+        window.blit(text, [10,0])
 
+def msgGameOver(picGameOver):
+
+    fonty = pygame.font.Font('BradBunR.ttf',20)
+
+    text = fonty.render("Press any button", True, (0,0,255))
+
+    window.blit(text, [1280/2, 600/2])
+
+    pygame.display.update()
+
+
+
+        
 #RUNNER
 while run:
 
@@ -54,6 +74,8 @@ while run:
             runGameEasy = False
             runGameMedium = False
             runGameHard = False
+
+            y_move = 0
 
             alive = True #variable pour l'echec
 
@@ -104,13 +126,11 @@ while run:
 
                 #EASY    
                 while runGameEasy:
-
-                        for i in range(0,1000):
-                                window.blit(backGame, (i, 100))
-                                pygame.display.flip()
                                 
                         for event in pygame.event.get():
+                                window.blit(backGame, (0 ,0))
                                 
+                                birdy.y += 50
                                 if event.type == QUIT:
                                         run = False
                                         runHome = False
@@ -118,16 +138,45 @@ while run:
                                         runGameEasy = False
                                         print("ExitFromEasy")
 
-                                elif event.type == KEYDOWN and event.key == K_ESCAPE:
+                                if event.type == KEYDOWN and event.key == K_ESCAPE:
                                         runGameEasy = False
                                         runGame = True        
                                        
-                                #elif event.key == K_SPACE:
-                                        #birdy.fly('up')
+                                if event.type == KEYDOWN and event.key == K_SPACE:
+                                        y_move = -5
+                                if event.type == KEYUP:
+                                        y_move = 5
+                                        
+                        birdy.y += y_move
+                        birdMove(birdy.x, birdy.y, birdy.up)     
+                        pygame.display.update()        
+                pygame.display.flip()
 
-     
-                        pygame.display.flip()        
-                pygame.display.flip()    
+                
+                #MEDIUM    
+                while runGameMedium:
+                                
+                        for event in pygame.event.get():
+                                
+                                window.blit(backGame, (0 ,0))
+                                
+                                if event.type == QUIT:
+                                        run = False
+                                        runHome = False
+                                        runGame = False
+                                        runGameMedium = False
+                                        print("ExitFromEasy")
+
+                                if event.type == KEYDOWN and event.key == K_ESCAPE:
+                                        runGameMedium = False
+                                        runGame = True        
+                                       
+                                if event.type == KEYDOWN and event.key == K_SPACE:
+                                        msgGameOver(pic_gameover)
+                                        
+   
+                        pygame.display.update()        
+                pygame.display.flip()                
             pygame.display.flip()
         
         

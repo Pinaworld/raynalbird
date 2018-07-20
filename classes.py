@@ -9,10 +9,8 @@ class Bird:
                     self.up = pygame.image.load(up).convert_alpha()
                     self.down = pygame.image.load(down).convert_alpha()
 
-                    self.case_x = 0
-                    self.case_y = 0
-                    self.x = 0
-                    self.y = 0
+                    self.x = 100
+                    self.y = 300
 
                     self.fly = self.up
 
