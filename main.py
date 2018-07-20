@@ -22,6 +22,7 @@ while run:
         runGame = False
 
         backHome = pygame.image.load(pic_home).convert_alpha()
+        backLevel = pygame.image.load(pic_level).convert_alpha()
         backGame = pygame.image.load(pic_game).convert_alpha()
             
         pygame.display.flip()
@@ -46,12 +47,17 @@ while run:
             
         #GAME
         while runGame:
-            window.blit(backGame, (0, 0))
+                
+            window.blit(backLevel, (0, 0))
+            #LEVEL
+            
             runGameEasy = False
             runGameMedium = False
             runGameHard = False
 
-            alive = True
+            alive = True #variable pour l'echec
+
+            birdy = Bird("pics/upflap.png","pics/downflap.png")
             
             for event in pygame.event.get():
                 
@@ -95,6 +101,32 @@ while run:
                         runGameHard = False
                         
                     print("Hard_Mode")
+
+                #EASY    
+                while runGameEasy:
+
+                        for i in range(0,1000):
+                                window.blit(backGame, (i, 100))
+                                pygame.display.flip()
+                                
+                        for event in pygame.event.get():
+                                
+                                if event.type == QUIT:
+                                        run = False
+                                        runHome = False
+                                        runGame = False
+                                        runGameEasy = False
+                                        print("ExitFromEasy")
+
+                                elif event.type == KEYDOWN and event.key == K_ESCAPE:
+                                        runGameEasy = False
+                                        runGame = True        
+                                       
+                                #elif event.key == K_SPACE:
+                                        #birdy.fly('up')
+
+     
+                        pygame.display.flip()        
                 pygame.display.flip()    
             pygame.display.flip()
         
